@@ -8,7 +8,13 @@ const fs = require("fs")
 try{
     const dadosDoArquivo = fs.readFileSync('./conteudo.txt', 'utf8')
 
-    console.log(dadosDoArquivo)
+    // quebro o texto em um array com as partes separadas
+    const dadosLidos = dadosDoArquivo.split('\n')
+
+    dadosLidos.forEach(linha => {
+        if(linha != '\r') // usado para ignorar a linha que possui este conteúdo
+        console.log(linha)  
+    })
 }catch(erro){
     console.log("Erro ao abrir o arquivo.")
     console.log(erro)

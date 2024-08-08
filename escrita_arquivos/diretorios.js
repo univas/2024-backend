@@ -41,19 +41,20 @@ fs.rmdir('novo_diretorio', {}, (err) => {
 
 //verificar antes de remover um arquivo
 fs.access('arquivo.txt', (err) => {
-    fs.unlink('arquivo.txt', (err) => {
-        if(err){
-            console.log("Impossível excluir arquivo")
-        }else{
-            console.log("Arquivo excluído")
-            fs.writeFile('arquivo_assincrono.txt', algum_dado, (err) => {
-                // throw new Error(err)
-                if(err) {
-                    console.log(err)
-                }else{
-                    console.log("Arquivo escrito com sucesso!")
-                }
-            })
-        }
-    })
+    if(!err){ // se existir o arquivo
+        fs.unlink('arquivo.txt', (err) => {
+            if(err){
+                console.log("Impossível excluir arquivo")
+            }else{
+                console.log("Arquivo excluído")
+                fs.writeFile('arquivo_assincrono.txt', algum_dado, (err) => {
+                    if(err) {
+                        console.log(err)
+                    }else{
+                        console.log("Arquivo escrito com sucesso!")
+                    }
+                })
+            }
+        })
+    }
 })

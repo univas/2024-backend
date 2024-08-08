@@ -8,3 +8,29 @@
 // ARQUIVO INEXISTENTE
 
 // Dica: Utilize(await fs.writeFile; await fs.readFile)
+
+
+
+const fs = require("fs").promises
+
+async function executar(){
+    try{
+        const mensagem = "Conteúdo digitado"
+
+        await fs.writeFile("arquivo.txt", mensagem)
+
+        console.log("Arquivo escrito com sucesso!")
+
+        const conteudo = await fs.readFile("arquivo.txt", "utf8")
+
+        if(conteudo == mensagem){
+            console.log("O conteúdo é igual")
+        }else{
+            console.log("O conteúdo escrito foi diferente")
+        }
+    }catch(err){
+        console.log("Erro ao escrever arquivo")
+    }
+}
+
+executar()

@@ -1,0 +1,36 @@
+{
+    "alunos": [
+        {
+            "nome": "jose",
+            "media": 30
+        },
+        {
+            "nome": "maria",
+            "media": 50
+        },
+        {
+            "nome": "joao",
+            "media": 60
+        },
+        {
+            "nome": "lucas",
+            "media": 70
+        },
+        {
+            "nome": "ilton",
+            "media": 45
+        },
+        {
+            "nome": "marcos",
+            "media": 70
+        },
+        {
+            "nome": "julia",
+            "media": 20
+        },
+        {
+            "nome": "carina",
+            "media": 25
+        }
+    ]
+}

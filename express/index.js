@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 // rota raiz  // Lorem = ctrl + shift + p
 app.get('/contato', (req, res) => {
     const html = `
-        <form method='get'>
+        <form method='get' action='/enviar-formulario'>
             <div>
                 <label>Nome</label><br> 
                 <input name='nome' type='text' />
@@ -18,6 +18,20 @@ app.get('/contato', (req, res) => {
             <div><button type='submit'>Enviar</button></div>
         </form>
     `
+    res.send(html)
+})
+
+app.get('/enviar-formulario', (req, res) => {
+    // query parameter
+    const nome = req.query.nome
+    const mensagem = req.query.mensagem
+    console.log(req.query)
+
+    const html = `
+        Olá, ${nome}<br>
+        Sua mensagem é: ${mensagem}
+    `
+
     res.send(html)
 })
 

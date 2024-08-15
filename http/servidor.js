@@ -1,5 +1,4 @@
 const http = require('http')
-
 const servidor = http.createServer((req, res) => {
     if(req.url == '/'){
         res.statusCode = 200

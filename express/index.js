@@ -41,6 +41,12 @@ app.get('/sobre', (req, res) => {
     res.send(lorem)
 })
 
+// rotas dinamicas
+app.get('/clientes/:id_cliente', (req, res) => {
+    const cliente = req.params.id_cliente
+    res.send("Página do cliente: " + cliente)
+})
+
 app.listen(3000, () => {
     console.log("Servidor está escutando...")
 })

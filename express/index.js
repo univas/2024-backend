@@ -47,6 +47,38 @@ app.get('/clientes/:id_cliente', (req, res) => {
     res.send("Página do cliente: " + cliente)
 })
 
+// receber como parametro o ano de nascimento
+// retornar a idade da pessoa com base no ano atual
+// DIca: new Date().getFullYear()
+// /formulario
+// /enviar-formulario
+// /idade/:ano
+
+// Sua idade é: XXXX
+
+app.get("/form-idade", (req, res) => {
+    res.send(`<form action='/enviar-form-idade'>
+                <input name='ano' />
+                <button type='submit'>Enviar</button>
+              </form>
+                
+            `)
+})
+
+app.get("/enviar-form-idade", (req, res) => {
+    const ano_atual = new Date().getFullYear()
+    const ano_enviado = req.query.ano
+
+    res.send(`Sua idade é : ${ano_atual - ano_enviado}`)
+})
+
+app.get("/idade/:ano", (req, res) => {
+    const ano_atual = new Date().getFullYear()
+    const ano_enviado = req.params.ano
+    res.send(`Sua idade é : ${ano_atual - ano_enviado}`)
+})
+
+
 app.listen(3000, () => {
     console.log("Servidor está escutando...")
 })

@@ -2,22 +2,25 @@ const express = require("express")
 const app = express()
 
 app.use(express.urlencoded())
+app.set('view engine', 'ejs')
+app.set('views', './views')
 
 app.get('/', (req, res) => {
-    const formulario = `
-        <form method="post">
-            <label>nome</label>
-            <input type="text" name="nome"/><br>
-            <label>email</label>
-            <input type="text" name="email"/><br>
-            <button type="submit">Enviar</button>
-        </form>
-    `
-    res.send(formulario)
+    res.render('formulario')
 })
 
 app.post('/', (req, res) => {
-    res.send(`O nome digitado é: ${req.body.nome}<br> Com e-mail: ${req.body.email}`)
+    const {nome, email} = req.body
+    const nomes = [
+        "Marcos",
+        "Ana",
+        "Maria",
+        "João",
+        "Alfredo"
+    ]
+    res.render("resultado", {
+        nome: nome, email: email, nomes: nomes
+    })
 })
 
 app.listen(3000, () => {

@@ -1,5 +1,8 @@
 const express = require("express")
 const app = express()
+const morgan = require("morgan")
+
+app.use(morgan('tiny'))
 app.get('/', (req, res) => {
     res.send("<h1>Página principal</h1>")
 })

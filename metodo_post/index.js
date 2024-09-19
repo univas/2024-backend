@@ -11,6 +11,9 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
     const {nome, email} = req.body
+    if(nome.lenght == 0){
+        res.send("Nome é obrigatório")
+    }
     const nomes = [
         "Marcos",
         "Ana",

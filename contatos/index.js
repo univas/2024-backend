@@ -1,5 +1,6 @@
 const express = require("express")
 const {z} = require("zod")
+const {Contato} = require("./models")
 
 const contatoSchema = z.object({
     nome: z.string({message: "Campo nome é obrigatório"}).min(3, {message: "O nome deve ter no mínimo 03 caracteres."}),
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
     const contato = req.body
 
     const resultado = contatoSchema.safeParse(contato)
@@ -30,8 +31,15 @@ app.post("/", (req, res) => {
         })
         res.send(erros.join(";"))
     }else{
+        await Contato.create(contato)
         res.send("Contato salvo com sucesso")
     }
+})
+
+app.get("/contatos", async (req, res) => {
+    const contatos = await Contato.findAll()
+
+    res.render("lista", {contatos: contatos})
 })
 
 app.listen(3000, () => {})

@@ -1,5 +1,5 @@
 {
-  "name": "contatos",
+  "name": "testes",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,6 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.21.0",
-    "sequelize": "^6.37.3",
-    "sqlite3": "^5.1.7",
-    "zod": "^3.23.8"
-  },
   "devDependencies": {
     "jest": "^29.7.0"
   }
